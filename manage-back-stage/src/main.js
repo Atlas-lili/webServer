@@ -18,7 +18,7 @@ Vue.use(VueAxios, axios, qs)
 Vue.use(MuseUI)
 Vue.use(Toast, {
   position: 'top', // 弹出的位置
-  time: 40000, // 显示的时长
+  time: 1500, // 显示的时长
   closeIcon: 'close', // 关闭的图标
   close: true, // 是否显示关闭按钮
   successIcon: 'check_circle', // 成功信息图标
