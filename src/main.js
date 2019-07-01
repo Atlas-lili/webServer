@@ -6,6 +6,7 @@ import router from './router'
 
 import axios from 'axios'
 import qs from 'qs'
+import vueCookie from 'vue-cookie'
 import VueAxios from 'vue-axios'
 
 import MuseUI from 'muse-ui'
@@ -13,7 +14,7 @@ import Toast from 'muse-ui-toast'
 import 'muse-ui/dist/muse-ui.css'
 
 Vue.config.productionTip = false
-
+Vue.use(vueCookie)
 Vue.use(VueAxios, axios, qs)
 Vue.use(MuseUI)
 Vue.use(Toast, {

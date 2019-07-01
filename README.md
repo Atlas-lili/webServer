@@ -1,4 +1,4 @@
-# manage-back-stage
+# manage-back-stage [![Build Status](https://www.travis-ci.org/Atlas-lili/webServer.svg?branch=master)](https://www.travis-ci.org/Atlas-lili/webServer)
 
 > A Vue.js project
 

@@ -28,7 +28,7 @@ export default {
   name: 'Login',
   data () {
     return {
-      codeImg: '/api/login/admin/code',
+      codeImg: '/api/login/admin/code?',
       usernameRules: [
         {validate: (val) => !!val, message: '必须填写用户名'}
       ],
@@ -45,7 +45,8 @@ export default {
   methods: {
     reDownLoadImg () {
       var num = Date.parse(new Date())
-      this.codeImg += '?' + num
+      num = (this.codeImg.split('?')[1] - 0 + num) >>> 1
+      this.codeImg = this.codeImg.split('?')[0] + '?' + num
     },
     submit () {
       this.$refs.form.validate().then((result) => {
@@ -54,10 +55,13 @@ export default {
           this.$http.post('/api/login/admin/login', data)
             .then(response => {
               let backData = response.data
-              console.log(backData)
               this.isLoad = !this.isLoad
               if (backData.code === 0) {
                 this.$toast.success('登陆成功！')
+                this.$cookie.set('userName', backData.data['loginUserInfo']['operInfo']['login_id'], {expires: '1D'})
+                this.$cookie.set('token', backData.data['token'], {expires: '1D'})
+                this.$cookie.set('cust_id', backData.data['loginUserInfo']['operInfo']['cust_id'], {expires: '1D'})
+                this.$router.replace({path: '/Sys'})
                 // 跳转
               } else {
                 // 滞留 报错
